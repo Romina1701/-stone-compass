@@ -196,7 +196,24 @@
       .wrap{width:min(100% - 22px,1120px)}.hero{padding-top:34px}h1{font-size:2.6rem}.orb-stage{min-height:360px}
       .orbit-label{font-size:.73rem;padding:7px 10px}.card{padding:22px}section{padding:58px 0}
     }
-  </style>
+  
+    .premium-result{margin-top:22px;padding:22px;border-radius:24px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.045));border:1px solid var(--line)}
+    .bracelet-stage{margin-top:18px;min-height:360px;display:grid;place-items:center;border-radius:24px;background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.16),transparent 24%),radial-gradient(circle at 50% 55%,rgba(200,168,255,.18),transparent 44%),linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015));overflow:hidden;position:relative}
+    .bracelet-stage::after{content:"";position:absolute;inset:auto 12% 18px;height:24px;border-radius:50%;background:rgba(0,0,0,.28);filter:blur(14px)}
+    .bracelet-real{position:relative;width:300px;height:300px;border-radius:50%;filter:drop-shadow(0 18px 24px rgba(0,0,0,.35));z-index:1}
+    .bracelet-bead{position:absolute;width:44px;height:44px;border-radius:50%;left:128px;top:128px;box-shadow:inset 8px 8px 12px rgba(255,255,255,.35),inset -9px -10px 14px rgba(0,0,0,.22),0 6px 10px rgba(0,0,0,.24);border:1px solid rgba(255,255,255,.22)}
+    .bracelet-bead::before{content:"";position:absolute;width:11px;height:8px;border-radius:50%;left:9px;top:7px;background:rgba(255,255,255,.6)}
+    .stone-catalog{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+    .stone-catalog-card{padding:14px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid var(--line);text-align:center}
+    .stone-catalog-card .gem{margin:0 auto 10px;width:54px;height:54px;display:block}
+    .stone-catalog-card strong{display:block;font-size:.92rem}.stone-catalog-card small{display:block;color:var(--muted);margin-top:4px;line-height:1.4}
+    .spec-table{margin-top:18px;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+    .spec-row{display:grid;grid-template-columns:1fr auto;gap:12px;padding:12px 14px;background:rgba(255,255,255,.035)}
+    .spec-row+.spec-row{border-top:1px solid var(--line)}.spec-row span:last-child{font-weight:800;color:var(--gold)}
+    .result-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(239,213,139,.10);border:1px solid rgba(239,213,139,.26);color:#f5df9d;font-size:.82rem}
+    @media(max-width:560px){.bracelet-real{transform:scale(.82)}.bracelet-stage{min-height:300px}.stone-catalog{grid-template-columns:1fr}}
+
+</style>
 </head>
 <body>
 <header>
@@ -304,10 +321,19 @@
       </div>
       <h2 style="margin-top:28px">おすすめ天然石 3種類</h2>
       <div class="result-stones" id="resultStones"></div>
-      <div class="bracelet-plan">
-        <h3 style="margin:0">ブレスレットの組み合わせ案</h3>
-        <div class="bracelet-visual" id="braceletVisual"></div>
-        <p id="braceletText" style="color:var(--muted);line-height:1.75;margin:0"></p>
+      <div class="premium-result">
+        <span class="result-badge">✦ あなた専用の組み合わせ</span>
+        <h2 style="margin:14px 0 6px">おすすめブレスレット</h2>
+        <p id="braceletTitle" style="font-family:'Yu Mincho',serif;font-size:1.25rem;margin:0;color:var(--text)"></p>
+        <div class="bracelet-stage"><div class="bracelet-real" id="braceletReal"></div></div>
+        <div class="stone-catalog" id="stoneCatalog"></div>
+        <div class="spec-table">
+          <div class="spec-row"><span>内周サイズ</span><span>約16cm</span></div>
+          <div class="spec-row"><span>使用石</span><span>3種類</span></div>
+          <div class="spec-row"><span>基本構成</span><span>8mm × 16粒</span></div>
+          <div class="spec-row"><span>デザイン</span><span>左右対称</span></div>
+        </div>
+        <p id="braceletText" style="color:var(--muted);line-height:1.8;margin:18px 0 0"></p>
       </div>
       <button class="btn btn-primary order-btn" id="orderButton">この結果でオーダー相談へ →</button>
       <button class="btn btn-secondary order-btn" id="restartButton">もう一度診断する</button>
@@ -352,6 +378,9 @@ const stones = {
   "ラブラドライト":{color:"#6f7895",meaning:"直感や変化の象徴として親しまれています。新しい可能性に気づくお守りに。"},
   "ルチルクォーツ":{color:"#d2ae56",meaning:"意志や目標達成の象徴として親しまれています。考えを現実へつなぐきっかけに。"},
   "アクアマリン":{color:"#79c4d5",meaning:"穏やかなコミュニケーションの象徴として親しまれています。言葉を整えたい時のお守りに。"},
+  "ガーネット":{color:"#6f0d1f",meaning:"情熱や継続の象徴として親しまれています。目標へ粘り強く進みたい時のお守りに。"},
+  "ロードクロサイト":{color:"#e47d93",meaning:"愛情や自己肯定の象徴として親しまれています。自分らしさを大切にしたい時のお守りに。"},
+  "ラピスラズリ":{color:"#174aa0",meaning:"知恵や真実、直感の象徴として親しまれています。迷いを整理したい時のお守りに。"},
   "水晶":{color:"#d9e8f2",meaning:"調和や透明感の象徴として親しまれています。石同士をまとめる基調石として提案します。"}
 };
 
@@ -450,6 +479,18 @@ function uniqueStones(list){
   return out.slice(0,3);
 }
 function gemStyle(color){return `radial-gradient(circle at 32% 28%,#fff,${color} 35%,#30233f 95%)`}
+function stoneBackground(name){
+  if(name==="水晶") return "radial-gradient(circle at 30% 25%,rgba(255,255,255,.95),rgba(225,242,255,.55) 30%,rgba(168,198,218,.28) 62%,rgba(255,255,255,.75) 100%)";
+  if(name==="ラピスラズリ") return "radial-gradient(circle at 30% 25%,#5f86d9,#174aa0 46%,#0b255d 100%)";
+  if(name==="ロードクロサイト") return "repeating-linear-gradient(155deg,#f4a9b7 0 8px,#d96f86 9px 14px,#f7c6cf 15px 18px)";
+  if(name==="ローズクォーツ") return "radial-gradient(circle at 30% 25%,#fff4f7,#eeb2c0 42%,#c9798d 100%)";
+  if(name==="ガーネット") return "radial-gradient(circle at 30% 25%,#d65b6c,#740f23 48%,#2d050d 100%)";
+  if(name==="アメジスト") return "radial-gradient(circle at 30% 25%,#e8d7ff,#8e61bc 42%,#43205f 100%)";
+  if(name==="シトリン") return "radial-gradient(circle at 30% 25%,#fff4bd,#e4b844 42%,#8e6510 100%)";
+  if(name==="タイガーアイ") return "repeating-linear-gradient(165deg,#3f2714 0 7px,#c68a2c 8px 13px,#6d411a 14px 19px)";
+  const c=stones[name].color;return `radial-gradient(circle at 30% 25%,#fff,${c} 42%,#30233f 100%)`;
+}
+
 function buildResult(){
   const num=numerology[lifeNumber]||numerology[reduceNumber(lifeNumber)];
   const themeKey=dominantTheme(),theme=themes[themeKey];
@@ -467,15 +508,22 @@ function buildResult(){
   selected.forEach((name,i)=>{
     const s=stones[name];
     const div=document.createElement("div");div.className="result-stone";
-    div.innerHTML=`<span class="gem" style="background:${gemStyle(s.color)}"></span><div><strong>${i+1}. ${name}</strong><small>${s.meaning}</small></div>`;
+    div.innerHTML=`<span class="gem" style="background:${stoneBackground(name)}"></span><div><strong>${i+1}. ${name}</strong><small>${s.meaning}</small></div>`;
     resultStones.appendChild(div);
   });
 
-  const visual=document.getElementById("braceletVisual");visual.innerHTML="";
+  const bracelet=document.getElementById("braceletReal");bracelet.innerHTML="";
   const pattern=[0,2,1,2,0,2,1,2,0,2,1,2,0,2,1,2];
-  pattern.forEach(idx=>{const bead=document.createElement("span");bead.className="bead";bead.style.background=gemStyle(stones[selected[idx]].color);visual.appendChild(bead)});
-  document.getElementById("braceletText").textContent=
-    `${selected[0]}を主役に6石、${selected[1]}をアクセントに4石、水晶を6石配置する16石構成。主役石で数秘の個性を表し、補助石で現在のテーマを支え、水晶で全体の印象をつなぐ提案です。`;
+  pattern.forEach((idx,i)=>{
+    const name=selected[idx],angle=(360/pattern.length)*i-90,rad=angle*Math.PI/180;
+    const bead=document.createElement("span");bead.className="bracelet-bead";
+    bead.style.left=(128+Math.cos(rad)*112)+"px";bead.style.top=(128+Math.sin(rad)*112)+"px";
+    bead.style.background=stoneBackground(name);bead.title=name;bracelet.appendChild(bead);
+  });
+  const catalog=document.getElementById("stoneCatalog");catalog.innerHTML="";
+  selected.forEach((name,i)=>{const card=document.createElement("div");card.className="stone-catalog-card";const roles=["メイン","サブ","調和"];card.innerHTML=`<span class="gem" style="background:${stoneBackground(name)}"></span><strong>${name}</strong><small>${roles[i]}ストーン</small>`;catalog.appendChild(card)});
+  document.getElementById("braceletTitle").textContent=`「${theme.name}」を支える ${selected[0]}ブレスレット`;
+  document.getElementById("braceletText").textContent=`${selected[0]}を主役に、${selected[1]}をアクセントとして配置し、水晶で全体をつないだ16粒構成です。診断結果に合わせて、石の種類と並び順が自動で変わります。`;
   document.getElementById("orderButton").onclick=()=>{
     const text=`Stone Compass 診断結果\nライフパス：${lifeNumber}\nテーマ：${num.title} × ${theme.name}\nおすすめ：${selected.join("・")}`;
     if(navigator.share){navigator.share({title:"Stone Compass 診断結果",text}).catch(()=>{})}
