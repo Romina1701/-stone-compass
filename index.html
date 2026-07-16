@@ -3,183 +3,297 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#08102e">
-<title>Stone Compass</title>
+<meta name="theme-color" content="#0a0d2a">
+<title>Stone Compass｜天然石診断</title>
 <style>
 :root{
-  --navy:#07102e;--navy2:#151047;--gold:#d9b86f;--ink:#3b2d27;
-  --paper:#fffaf4;--line:#eadfcf;--muted:#75685f;--pink:#efafbe;
+  --bg:#0a0d2a;--panel:#19122f;--text:#fff;--muted:#c7bfd4;
+  --gold:#efd58b;--line:rgba(255,255,255,.14);--pink:#ffb6d3;--violet:#c5a6ff
 }
-*{box-sizing:border-box} html{scroll-behavior:smooth}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;background:#090d27;color:#fff}
-button,input{font:inherit}.hidden{display:none!important}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;background:
-radial-gradient(circle at 8% 10%,rgba(121,84,255,.24),transparent 20%),
-radial-gradient(circle at 88% 5%,rgba(45,105,255,.23),transparent 22%),
-radial-gradient(circle at 60% 80%,rgba(205,90,255,.13),transparent 28%),
-linear-gradient(135deg,#050922,#0e1743 55%,#261040);z-index:-2}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.65;background-image:
-radial-gradient(circle,#fff 0 1px,transparent 1.4px),
-radial-gradient(circle,#fff7c4 0 1px,transparent 1.4px);
-background-size:74px 74px,118px 118px;background-position:0 0,33px 17px;z-index:-1}
-.start-page{min-height:100svh;display:grid;place-items:center;padding:28px}
-.start-card{width:min(720px,100%);text-align:center;padding:42px 24px;border:1px solid rgba(217,184,111,.34);border-radius:30px;background:rgba(8,12,40,.78);backdrop-filter:blur(18px);box-shadow:0 30px 90px rgba(0,0,0,.38)}
-.logo{font-family:Georgia,"Yu Mincho",serif;font-size:clamp(2rem,7vw,4rem);color:#fff3ce}.logo small{display:block;font-size:.28em;letter-spacing:.35em;color:#e6cf92}
-.start-card h1{font-family:"Yu Mincho",serif;font-size:clamp(1.8rem,5vw,3rem);margin:28px 0 12px}
-.start-card p{color:#d0c8db;line-height:1.9}
-.primary{border:0;border-radius:999px;padding:15px 25px;background:linear-gradient(135deg,#f1daa0,#dabcf8,#f4bdd0);color:#281b33;font-weight:800;cursor:pointer}
-.secondary{border:1px solid rgba(217,184,111,.45);border-radius:999px;padding:13px 22px;background:rgba(255,255,255,.08);color:#fff;cursor:pointer}
-.quiz{width:min(720px,calc(100% - 24px));margin:24px auto;padding:26px;border-radius:28px;background:#17112e;border:1px solid rgba(255,255,255,.12);box-shadow:0 25px 70px rgba(0,0,0,.35)}
-.quiz h2{font-family:"Yu Mincho",serif}.quiz input{width:100%;padding:15px;border-radius:14px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:#fff;color-scheme:dark}
-.answers{display:grid;gap:10px;margin:20px 0}.answer{padding:15px;text-align:left;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:#fff}.answer.sel{border-color:#e6cb85;background:rgba(230,203,133,.15)}
-.row{display:flex;justify-content:space-between;gap:10px}.progress{height:7px;background:rgba(255,255,255,.09);border-radius:99px;overflow:hidden;margin-bottom:20px}.bar{height:100%;background:linear-gradient(90deg,#e9cf8d,#e6a9c1,#b899f4)}
-
-.result-shell{width:min(1500px,100%);margin:0 auto;min-height:100svh;padding:18px}
-.result-head{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;padding:2px 10px 14px}
-.result-head .brand{font-family:Georgia,"Yu Mincho",serif;font-size:clamp(1.4rem,3vw,2.4rem);color:#fff2c4}
-.result-head h1{font-family:"Yu Mincho",serif;text-align:center;margin:0;font-size:clamp(1.4rem,3vw,2.5rem);letter-spacing:.12em}
-.result-grid{display:grid;grid-template-columns:210px 1fr;gap:16px}
-.sidebar{display:flex;flex-direction:column;gap:14px}
-.flow,.side-cta{background:rgba(255,250,244,.97);color:var(--ink);border-radius:20px;padding:18px;border:1px solid var(--line)}
-.flow h3{text-align:center;font-family:"Yu Mincho",serif;margin:0 0 14px}.flow-item{padding:11px 4px;border-bottom:1px solid #eee4d9;font-size:.88rem}.flow-item.active{font-weight:800;color:#8a5c1b}.side-cta{color:#fff;background:linear-gradient(160deg,rgba(13,24,70,.95),rgba(21,14,60,.95));border-color:rgba(217,184,111,.5)}.side-cta h3{color:#efcf82;font-family:"Yu Mincho",serif}.side-cta p{font-size:.82rem;line-height:1.7;color:#ddd5e8}
-.main-panel{background:rgba(255,250,244,.985);color:var(--ink);border-radius:24px;padding:14px;border:1px solid var(--line);box-shadow:0 25px 65px rgba(0,0,0,.24)}
-.top-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.info-card{padding:16px;text-align:center;border-radius:18px;background:#fff;border:1px solid var(--line);min-height:210px}.info-card h3{font-size:.9rem;margin:0 0 8px}.info-card p{font-size:.84rem;line-height:1.75;color:#594d45}.life{font-family:"Yu Mincho",serif;font-size:4.3rem;line-height:1;color:#493930}.life-title{font-family:"Yu Mincho",serif;font-weight:700;margin:7px 0}
-.lucky{display:flex;gap:14px;align-items:center;padding:14px 22px;margin-top:10px;background:#fff;border:1px solid var(--line);border-radius:15px}.dots{display:flex;gap:8px}.dot{width:28px;height:28px;border-radius:50%;border:2px solid rgba(80,60,40,.12)}
-.title-line{display:flex;align-items:center;gap:14px;margin:15px 0 10px;font-family:"Yu Mincho",serif;font-size:1.6rem;text-align:center}.title-line:before,.title-line:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,#caa45e,transparent)}
-.stone-section{display:grid;grid-template-columns:1fr 330px;gap:12px}
-.stone-three{display:grid;grid-template-columns:repeat(3,1fr);background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.stone-card{text-align:center;padding:14px 18px}.stone-card+.stone-card{border-left:1px solid var(--line)}.role{display:inline-block;min-width:130px;padding:5px 12px;border-radius:999px;background:#f0e8e0;font-size:.75rem}.gem{width:105px;height:105px;margin:13px auto;border-radius:50%;box-shadow:inset 18px 18px 22px rgba(255,255,255,.35),inset -18px -18px 24px rgba(0,0,0,.17),0 16px 22px rgba(55,40,30,.16);position:relative}.gem:before{content:"";position:absolute;width:28px;height:18px;border-radius:50%;background:rgba(255,255,255,.65);left:20px;top:15px;filter:blur(1px)}.stone-card p{font-size:.82rem;line-height:1.7;color:#65594f}
-.catalog{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px}.catalog h3{text-align:center;font-family:"Yu Mincho",serif;margin:0 0 12px}.catalog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.catalog-item{text-align:center;font-size:.68rem}.catalog-item .gem{width:45px;height:45px;margin:0 auto 6px}
-.bracelet-block{display:grid;grid-template-columns:1fr 330px;gap:14px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}.bracelet-area{min-height:405px;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 50% 50%,rgba(239,215,173,.22),transparent 46%)}.bracelet{width:380px;height:380px;position:relative}.bead{position:absolute;width:58px;height:58px;border-radius:50%;left:161px;top:161px;box-shadow:inset 11px 11px 15px rgba(255,255,255,.45),inset -11px -13px 16px rgba(0,0,0,.18),0 8px 12px rgba(45,34,28,.18)}.bead:before{content:"";position:absolute;width:13px;height:9px;border-radius:50%;background:rgba(255,255,255,.62);left:12px;top:10px}.center-copy{position:absolute;inset:0;display:grid;place-content:center;text-align:center;pointer-events:none}.center-copy strong{font-family:"Yu Mincho",serif;font-size:1.35rem}.center-copy span{color:#77695e;margin-top:8px}
-.specs{padding:8px}.size{text-align:center;font-size:.8rem;margin-bottom:10px}.spec-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:8px;padding:9px;border-bottom:1px solid #eee5dc;font-size:.78rem}.mini-gem{width:28px;height:28px;border-radius:50%;box-shadow:inset 5px 5px 7px rgba(255,255,255,.45),inset -5px -5px 7px rgba(0,0,0,.18)}.total{display:flex;justify-content:space-between;padding:12px;font-weight:800}.order-wide{width:100%;margin-top:12px}
-.notice{font-size:.72rem;color:#776b63;line-height:1.7;padding:13px 4px 2px}
-@media(max-width:1000px){.result-grid{grid-template-columns:1fr}.sidebar{display:none}.stone-section,.bracelet-block{grid-template-columns:1fr}.catalog-grid{grid-template-columns:repeat(7,1fr)}}
-@media(max-width:700px){.result-shell{padding:0}.result-head{padding:13px 12px;grid-template-columns:1fr auto}.result-head h1{grid-column:1/-1;grid-row:1;text-align:left;font-size:1.2rem}.result-head .brand{grid-row:2;font-size:1.2rem}.main-panel{border-radius:0;padding:10px}.top-cards{grid-template-columns:1fr 1fr}.stone-three{grid-template-columns:1fr}.stone-card+.stone-card{border-left:0;border-top:1px solid var(--line)}.catalog-grid{grid-template-columns:repeat(4,1fr)}.bracelet{transform:scale(.78)}.bracelet-area{min-height:330px}.lucky{align-items:flex-start;flex-wrap:wrap}.title-line{font-size:1.25rem}}
-@media(max-width:430px){.top-cards{grid-template-columns:1fr}.catalog-grid{grid-template-columns:repeat(3,1fr)}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100vh;color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;
+  background:
+    radial-gradient(circle at 14% 8%,rgba(116,72,225,.25),transparent 25%),
+    radial-gradient(circle at 87% 10%,rgba(43,108,220,.20),transparent 22%),
+    linear-gradient(180deg,#080b22,#141032 55%,#080b22)
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(circle,#fff 0 1px,transparent 1.3px);
+  background-size:75px 75px
+}
+button,input{font:inherit}
+.hidden{display:none!important}
+.wrap{width:min(780px,calc(100% - 24px));margin:auto}
+.hero{min-height:100svh;display:grid;place-items:center;padding:28px 0}
+.hero-card{
+  width:100%;padding:40px 24px;text-align:center;border-radius:30px;
+  border:1px solid var(--line);background:rgba(14,10,32,.76);
+  backdrop-filter:blur(18px);box-shadow:0 28px 80px rgba(0,0,0,.38)
+}
+.logo{font-family:Georgia,"Yu Mincho",serif;color:#fff1c3;font-size:clamp(2.1rem,8vw,4.2rem)}
+.logo small{display:block;font:500 .28em/1.5 sans-serif;letter-spacing:.34em;color:#d9c793}
+.hero h1{font-family:"Yu Mincho",serif;font-size:clamp(1.8rem,5vw,3rem);margin:25px 0 12px}
+.hero p{color:var(--muted);line-height:1.9}
+.btn{
+  min-height:52px;padding:0 22px;border-radius:999px;border:0;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;font-weight:800
+}
+.primary{background:linear-gradient(135deg,#efd68f,#d5b6ff,#ffb7d5);color:#21162c}
+.secondary{background:rgba(255,255,255,.07);border:1px solid var(--line);color:#fff}
+.quiz{padding:24px 0 60px}
+.quiz-card{padding:24px;border-radius:26px;background:rgba(24,17,45,.95);border:1px solid var(--line);box-shadow:0 24px 70px rgba(0,0,0,.32)}
+.progress{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:22px}
+.bar{height:100%;width:10%;background:linear-gradient(90deg,var(--gold),var(--pink),var(--violet));transition:.25s}
+.quiz h2{font-family:"Yu Mincho",serif;font-size:clamp(1.5rem,5vw,2.2rem);margin:0 0 14px}
+.quiz p{color:var(--muted);line-height:1.75}
+.date{width:100%;min-height:56px;padding:0 15px;border-radius:15px;border:1px solid var(--line);background:rgba(255,255,255,.07);color:#fff;color-scheme:dark}
+.answers{display:grid;gap:11px;margin:20px 0}
+.answer{padding:16px;text-align:left;border-radius:15px;border:1px solid var(--line);background:rgba(255,255,255,.055);color:#fff;cursor:pointer}
+.answer.selected{border-color:var(--gold);background:rgba(239,213,139,.13)}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+.error{color:#ff9db4;min-height:24px}
+.result{padding:10px 0 50px}
+.result-top{position:sticky;top:0;z-index:5;padding:12px 0;background:rgba(9,11,34,.88);backdrop-filter:blur(16px)}
+.result-top-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.result-title{font-family:"Yu Mincho",serif;font-size:1.15rem}
+.result-image{
+  display:block;width:100%;height:auto;margin:12px auto 0;border-radius:18px;
+  box-shadow:0 24px 65px rgba(0,0,0,.42);background:#fff
+}
+.result-info{margin-top:14px;padding:17px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.07)}
+.result-info small{color:var(--gold);letter-spacing:.08em}
+.result-info h2{font-family:"Yu Mincho",serif;margin:5px 0 8px}
+.result-info p{color:var(--muted);line-height:1.7;margin:0}
+.result-buttons{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:14px}
+.result-buttons .btn{width:100%}
+.note{font-size:.76rem;color:#9f96ad;line-height:1.7;margin-top:16px}
+@media(max-width:520px){
+  .wrap{width:min(100% - 16px,780px)}
+  .hero-card,.quiz-card{padding:26px 17px}
+  .result-buttons{grid-template-columns:1fr}
+  .result-image{border-radius:10px}
+  .result-top .btn{min-height:40px;padding:0 14px;font-size:.78rem}
+}
 </style>
 </head>
 <body>
-<section class="start-page" id="start">
-  <div class="start-card">
-    <div class="logo">✧ Stone Compass<small>ストーンコンパス</small></div>
-    <h1>あなたを導く石を見つける</h1>
-    <p>誕生日と5つの質問から、今のテーマとおすすめの天然石、ブレスレットをご提案します。</p>
-    <button class="primary" id="begin">無料で診断を始める</button>
+
+<section class="hero" id="hero">
+  <div class="wrap">
+    <div class="hero-card">
+      <div class="logo">✧ Stone Compass<small>ストーンコンパス</small></div>
+      <h1>あなたを導く石を見つける</h1>
+      <p>誕生日と5つの質問から、今のテーマに寄り添う天然石とブレスレットをご提案します。</p>
+      <button class="btn primary" id="startBtn">無料で診断を始める</button>
+    </div>
   </div>
 </section>
 
 <section class="quiz hidden" id="quiz">
-  <div class="progress"><div class="bar" id="bar"></div></div>
-  <div id="birthStep">
-    <h2>生年月日を入力してください</h2>
-    <input type="date" id="birthday">
-    <p id="birthErr" style="color:#ff9db4"></p>
-    <div class="row"><span></span><button class="primary" id="birthNext">質問へ進む</button></div>
-  </div>
-  <div id="questionStep" class="hidden">
-    <small id="qCount"></small><h2 id="qText"></h2><div class="answers" id="answers"></div>
-    <div class="row"><button class="secondary" id="prev">戻る</button><button class="primary" id="next">次へ</button></div>
+  <div class="wrap">
+    <div class="quiz-card">
+      <div class="progress"><div class="bar" id="bar"></div></div>
+
+      <div id="birthScreen">
+        <h2>生年月日を入力してください</h2>
+        <p>生年月日の数字から、ライフパスナンバーを計算します。</p>
+        <input class="date" type="date" id="birthday">
+        <div class="error" id="birthError"></div>
+        <div class="actions"><span></span><button class="btn primary" id="birthNext">質問へ進む →</button></div>
+      </div>
+
+      <div id="questionScreen" class="hidden">
+        <small id="questionCount"></small>
+        <h2 id="questionText"></h2>
+        <p>いちばん近いものを選んでください。</p>
+        <div class="answers" id="answers"></div>
+        <div class="actions">
+          <button class="btn secondary" id="prevBtn">← 戻る</button>
+          <button class="btn primary" id="nextBtn">次へ →</button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="result-shell hidden" id="result">
-  <div class="result-head">
-    <div class="brand">✧ Stone Compass</div>
-    <h1>あなたの診断結果</h1>
-    <button class="secondary" id="restart">↻ 診断をやり直す</button>
+<section class="result hidden" id="result">
+  <div class="result-top">
+    <div class="wrap result-top-inner">
+      <div class="result-title">✧ Stone Compass 診断結果</div>
+      <button class="btn secondary" id="restartTop">↻ やり直す</button>
+    </div>
   </div>
-  <div class="result-grid">
-    <aside class="sidebar">
-      <div class="flow"><h3>診断の流れ</h3>
-        <div class="flow-item">生年月日入力</div><div class="flow-item">5問診断　✓</div>
-        <div class="flow-item">数秘術の計算</div><div class="flow-item active">診断結果</div>
-        <div class="flow-item">おすすめ天然石</div><div class="flow-item">ブレスレット提案</div>
-      </div>
-      <div class="side-cta"><h3>あなただけの<br>オーダーブレスレットへ</h3><p>診断結果をもとに、世界にひとつの天然石ブレスレットをお作りします。</p><button class="primary">オーダー相談へ進む</button></div>
-      <div class="side-cta"><h3>大切な人への<br>プレゼントにも</h3><p>ギフトラッピングも承っております。</p><button class="secondary">ギフトについて</button></div>
-    </aside>
-    <main class="main-panel">
-      <div class="top-cards">
-        <article class="info-card"><h3>ライフパスナンバー</h3><div class="life" id="life"></div><div class="life-title" id="lifeTitle"></div><p id="lifeText"></p></article>
-        <article class="info-card"><h3>基本性格</h3><div style="font-size:2rem;color:#b89353">✿</div><p id="personality"></p></article>
-        <article class="info-card"><h3>現在のテーマ</h3><div style="font-size:2rem;color:#b89353">♧</div><p id="themeText"></p></article>
-        <article class="info-card"><h3>今意識したいこと</h3><div style="font-size:2rem;color:#b89353">★</div><p id="advice"></p></article>
-      </div>
-      <div class="lucky"><strong>ラッキーカラー</strong><div class="dots" id="dots"></div><span id="colorName"></span></div>
-      <div class="title-line">おすすめ天然石 3種類</div>
-      <div class="stone-section">
-        <div class="stone-three" id="stoneThree"></div>
-        <aside class="catalog"><h3>使用している天然石一覧（14種類）</h3><div class="catalog-grid" id="catalog"></div></aside>
-      </div>
-      <div class="title-line">おすすめブレスレット提案</div>
-      <div class="bracelet-block">
-        <div class="bracelet-area"><div class="bracelet" id="bracelet"></div><div class="center-copy"><strong id="braceletName"></strong><span id="braceletSub"></span></div></div>
-        <div class="specs"><div class="size">内周サイズ：約15.5cm（標準）</div><div id="specRows"></div><div class="total"><span>合計</span><span>16粒</span></div><button class="secondary order-wide">⌕ ブレスレットを拡大して見る</button></div>
-      </div>
-      <p class="notice">天然石の意味合いは古くからの伝承に基づくものであり、医学的な効果や結果を保証するものではありません。お守りや、気持ちを切り替えるきっかけとしてお楽しみください。</p>
-    </main>
+  <div class="wrap">
+    <img class="result-image" id="resultImage" alt="Stone Compass 診断結果">
+    <div class="result-info">
+      <small id="resultCode"></small>
+      <h2 id="resultName"></h2>
+      <p id="resultStones"></p>
+    </div>
+    <div class="result-buttons">
+      <button class="btn primary" id="orderBtn">この結果でオーダー相談へ →</button>
+      <button class="btn secondary" id="restartBtn">もう一度診断する</button>
+    </div>
+    <p class="note">画像内のボタンはデザインです。実際に操作できるボタンは画像の下にあります。天然石の意味合いは伝承に基づくもので、医学的な効果を保証するものではありません。</p>
   </div>
 </section>
+
 <script>
-const stones={
-"ローズクォーツ":{c:"#e6a1b2",l:"#ffe7ec",m:"優しさや愛情の象徴として親しまれています。自分を大切にする気持ちや、穏やかな人間関係のお守りに。"},
-"ロードクロサイト":{c:"#d7647f",l:"#ffc4d0",m:"愛情や自己肯定の象徴として親しまれています。自分らしい一歩を意識するきっかけに。"},
-"ガーネット":{c:"#620a1b",l:"#d5495e",m:"情熱や継続の象徴として親しまれています。目標に向かい粘り強く進みたい時のお守りに。"},
-"アメジスト":{c:"#7446a5",l:"#e5c9ff",m:"落ち着きや内省の象徴として親しまれています。気持ちを整えたい時や、直感を大切にしたい時に。"},
-"ラピスラズリ":{c:"#123d91",l:"#6387d5",m:"知恵や真実の象徴として親しまれています。迷いを整理し、本音を見つめるきっかけに。"},
-"シトリン":{c:"#d49d17",l:"#ffe28a",m:"明るさや豊かさの象徴として親しまれています。前向きな視点へ切り替えたい時のお守りに。"},
-"タイガーアイ":{c:"#7c4919",l:"#d7a045",m:"洞察力や行動力の象徴として親しまれています。目標へ意識を向けるきっかけに。"},
-"アクアマリン":{c:"#5db9ce",l:"#d8f8ff",m:"穏やかなコミュニケーションの象徴として親しまれています。言葉や関係を整えたい時に。"},
-"ラブラドライト":{c:"#46576d",l:"#96b0bf",m:"直感や変化の象徴として親しまれています。新しい可能性に気づくお守りに。"},
-"ムーンストーン":{c:"#cbd4e3",l:"#fff",m:"感受性や穏やかな変化の象徴として親しまれています。気持ちの波を見つめるきっかけに。"},
-"スモーキークォーツ":{c:"#65544c",l:"#c7b6ab",m:"安定や落ち着きの象徴として親しまれています。地に足をつけて整理したい時に。"},
-"カーネリアン":{c:"#c84e25",l:"#ff9c62",m:"勇気や行動力の象徴として親しまれています。新しい一歩を意識するお守りに。"},
-"ターコイズ":{c:"#2ea6a3",l:"#8ce2dd",m:"旅や守護、自由な表現の象徴として親しまれています。変化へ踏み出す時のお守りに。"},
-"水晶":{c:"#cbdce7",l:"#fff",m:"調和や透明感の象徴として親しまれています。石同士をつなぎ、全体を整える基調石に。"}
-};
-const patterns=[
-{theme:"愛と調和",life:6,title:"愛と調和の人",stones:["ローズクォーツ","アメジスト","水晶"],colors:["#efacc0","#76b07e","#fff"],bracelet:"愛と調和を育む",sub:"やさしさブレスレット"},
-{theme:"直感と真実",life:7,title:"探究と直感の人",stones:["アメジスト","ラピスラズリ","水晶"],colors:["#7852af","#264d9c","#fff"],bracelet:"直感を高める",sub:"インスピレーションブレスレット"},
-{theme:"成功と実り",life:8,title:"成功と豊かさの人",stones:["ガーネット","シトリン","タイガーアイ"],colors:["#7f1426","#d5a022","#985e25"],bracelet:"行動力を後押しする",sub:"パワーアクションブレスレット"},
-{theme:"成長と変化",life:3,title:"表現と成長の人",stones:["ターコイズ","ラブラドライト","水晶"],colors:["#2fa8a5","#52677c","#fff"],bracelet:"変化を楽しむ",sub:"アドベンチャーブレスレット"},
-{theme:"癒やしと再生",life:9,title:"博愛と癒やしの人",stones:["ローズクォーツ","アクアマリン","アメジスト"],colors:["#e7a3b4","#67bfd2","#8053ac"],bracelet:"愛と癒やしを広げる",sub:"ヒーリングブレスレット"}
+const questions=[
+ {q:"最近、いちばん気になっていることは？",a:[
+  ["人との関係を穏やかにしたい","love"],
+  ["仕事や目標を前へ進めたい","work"],
+  ["疲れや心のざわつきを整えたい","healing"],
+  ["迷いを整理し、自分の本音を知りたい","intuition"],
+  ["環境や流れを変えたい","growth"]
+ ]},
+ {q:"今、最も手に入れたい感覚は？",a:[
+  ["安心と愛情","love"],["達成感と自信","work"],["静けさと休息","healing"],
+  ["確信と洞察","intuition"],["自由と新鮮さ","growth"]
+ ]},
+ {q:"困った時に出やすい傾向は？",a:[
+  ["周囲に合わせすぎる","love"],["抱え込んで頑張りすぎる","work"],["考え続けて疲れる","healing"],
+  ["答えを探しすぎて動けない","intuition"],["すべてを一度に変えたくなる","growth"]
+ ]},
+ {q:"次の一週間で大切にしたいことは？",a:[
+  ["気持ちを言葉にする","love"],["優先順位を一つ決める","work"],["休む時間を守る","healing"],
+  ["静かに自分と向き合う","intuition"],["小さく新しいことを試す","growth"]
+ ]},
+ {q:"今の自分に贈りたい言葉は？",a:[
+  ["自分にもやさしくていい","love"],["一歩ずつ進めばいい","work"],["休むことも前進","healing"],
+  ["自分の直感を信じて","intuition"],["変化を楽しもう","growth"]
+ ]}
 ];
-const lifeData={
-3:["喜びを表現し、場を明るくする力があります。","言葉や創造性を小さく形にすること。"],
-6:["優しさと思いやりにあふれ、人の役に立つことに喜びを感じます。","完璧を求めず、自分の気持ちにも優しく寄り添うこと。"],
-7:["深く考え、本質を見つめる力があります。","静かな時間を確保し、自分の直感を言葉にすること。"],
-8:["現実を動かし、成果につなげる力があります。","力を抱え込まず、役割と休息のバランスを取ること。"],
-9:["広い視点と共感力を持ち、経験を次へ渡す力があります。","手放すものを決め、自分の回復も大切にすること。"]
+
+const resultData={
+ love:{
+  name:"愛と調和",
+  stones:"ローズクォーツ・アメジスト・水晶",
+  image:"images/results/result-love-harmony-01.png"
+ },
+ work:{
+  name:"仕事・成功",
+  stones:"シトリン・カーネリアン・タイガーアイ",
+  image:"images/results/result-work-success-01.png"
+ },
+ healing:{
+  name:"癒やし・再生",
+  stones:"アクアマリン・ムーンストーン・水晶",
+  image:"images/results/result-healing-01.png"
+ },
+ intuition:{
+  name:"直感・真実",
+  stones:"ラピスラズリ・アメジスト・水晶",
+  image:"images/results/result-intuition-01.png"
+ },
+ growth:{
+  name:"成長・変化",
+  stones:"ラブラドライト・ターコイズ・水晶",
+  image:"images/results/result-growth-01.png"
+ }
 };
-const qs=[
-["最近いちばん気になることは？",["人間関係","自分の直感","仕事や成果","変化や挑戦","心の休息"]],
-["今ほしい感覚は？",["安心","確信","達成感","自由","癒やし"]],
-["困った時の傾向は？",["合わせすぎる","考えすぎる","抱え込みすぎる","一気に変えたくなる","疲れて止まる"]],
-["一週間で大切にしたいことは？",["気持ちを伝える","静かな時間","優先順位","小さく試す","休息"]],
-["今の自分に贈りたい言葉は？",["やさしくていい","自分を信じて","一歩ずつ進もう","変化を楽しもう","休んでもいい"]]
-];
-let qi=0,ans=[],selected=0;
-const $=id=>document.getElementById(id);
-$("begin").onclick=()=>{$("start").classList.add("hidden");$("quiz").classList.remove("hidden");$("bar").style.width="10%"};
-$("birthNext").onclick=()=>{if(!$("birthday").value){$("birthErr").textContent="生年月日を入力してください";return}$("birthStep").classList.add("hidden");$("questionStep").classList.remove("hidden");renderQ()};
-function renderQ(){let q=qs[qi];$("qCount").textContent=`質問 ${qi+1}/5`;$("qText").textContent=q[0];$("answers").innerHTML="";q[1].forEach((a,i)=>{let b=document.createElement("button");b.className="answer"+(ans[qi]===i?" sel":"");b.textContent=a;b.onclick=()=>{ans[qi]=i;renderQ()};$("answers").appendChild(b)});$("next").textContent=qi===4?"診断結果を見る":"次へ";$("bar").style.width=(25+(qi+1)*13)+"%"}
-$("prev").onclick=()=>{if(qi===0){$("questionStep").classList.add("hidden");$("birthStep").classList.remove("hidden")}else{qi--;renderQ()}};
-$("next").onclick=()=>{if(ans[qi]==null)return;if(qi<4){qi++;renderQ()}else showResult()};
-function bg(n){let s=stones[n];return `radial-gradient(circle at 30% 24%,#fff,${s.l} 26%,${s.c} 62%,#2c1d2b 100%)`}
-function showResult(){
- selected=Math.round(ans.reduce((a,b)=>a+b,0)/5)%5;let p=patterns[selected];
- $("quiz").classList.add("hidden");$("result").classList.remove("hidden");window.scrollTo(0,0);
- $("life").textContent=p.life;$("lifeTitle").textContent=p.title;$("lifeText").textContent=lifeData[p.life][0];
- $("personality").textContent=lifeData[p.life][0];$("themeText").textContent=`今のテーマは「${p.theme}」。心のバランスを整え、自分に必要な一歩を選ぶ時です。`;
- $("advice").textContent=lifeData[p.life][1];$("dots").innerHTML=p.colors.map(c=>`<i class="dot" style="background:${c}"></i>`).join("");$("colorName").textContent=p.colors.join("・").replaceAll("#","");
- $("stoneThree").innerHTML=p.stones.map((n,i)=>`<article class="stone-card"><span class="role">${["メイン","サブ","サポート"][i]}</span><div class="gem" style="background:${bg(n)}"></div><strong>${n}</strong><p>${stones[n].m}</p></article>`).join("");
- $("catalog").innerHTML=Object.keys(stones).map(n=>`<div class="catalog-item"><div class="gem" style="background:${bg(n)}"></div><strong>${n}</strong></div>`).join("");
- let pattern=[0,2,1,2,0,2,1,2,0,2,1,2,0,2,1,2],br=$("bracelet");br.innerHTML="";
- pattern.forEach((idx,i)=>{let a=i*360/16-90,r=a*Math.PI/180,b=document.createElement("i");b.className="bead";b.style.left=(161+Math.cos(r)*142)+"px";b.style.top=(161+Math.sin(r)*142)+"px";b.style.background=bg(p.stones[idx]);br.appendChild(b)});
- $("braceletName").textContent=p.bracelet;$("braceletSub").textContent=p.sub;
- let counts={};pattern.forEach(i=>counts[p.stones[i]]=(counts[p.stones[i]]||0)+1);
- $("specRows").innerHTML=p.stones.map(n=>`<div class="spec-row"><i class="mini-gem" style="background:${bg(n)}"></i><span>${n}</span><strong>8mm　${counts[n]}粒</strong></div>`).join("");
+
+const hero=document.getElementById("hero");
+const quiz=document.getElementById("quiz");
+const result=document.getElementById("result");
+const birthScreen=document.getElementById("birthScreen");
+const questionScreen=document.getElementById("questionScreen");
+const bar=document.getElementById("bar");
+const birthday=document.getElementById("birthday");
+let current=0;
+let selectedAnswers=new Array(questions.length).fill(null);
+let selectedResultKey="love";
+
+document.getElementById("startBtn").onclick=()=>{
+ hero.classList.add("hidden"); quiz.classList.remove("hidden");
+ window.scrollTo(0,0); bar.style.width="10%";
+};
+
+document.getElementById("birthNext").onclick=()=>{
+ const err=document.getElementById("birthError");
+ if(!birthday.value){err.textContent="生年月日を入力してください。";return;}
+ if(new Date(birthday.value+"T00:00:00")>new Date()){err.textContent="未来の日付は選べません。";return;}
+ err.textContent="";
+ birthScreen.classList.add("hidden");questionScreen.classList.remove("hidden");
+ current=0;renderQuestion();
+};
+
+function renderQuestion(){
+ const q=questions[current];
+ document.getElementById("questionCount").textContent=`QUESTION ${current+1} / ${questions.length}`;
+ document.getElementById("questionText").textContent=q.q;
+ const answers=document.getElementById("answers"); answers.innerHTML="";
+ q.a.forEach(([label,key])=>{
+  const b=document.createElement("button");
+  b.className="answer"+(selectedAnswers[current]===key?" selected":"");
+  b.textContent=label;
+  b.onclick=()=>{selectedAnswers[current]=key;renderQuestion();};
+  answers.appendChild(b);
+ });
+ document.getElementById("nextBtn").textContent=current===questions.length-1?"診断結果を見る ✦":"次へ →";
+ bar.style.width=(25+(current+1)*14)+"%";
 }
-$("restart").onclick=()=>location.reload();
+
+document.getElementById("prevBtn").onclick=()=>{
+ if(current===0){questionScreen.classList.add("hidden");birthScreen.classList.remove("hidden");bar.style.width="10%";}
+ else{current--;renderQuestion();}
+};
+
+document.getElementById("nextBtn").onclick=()=>{
+ if(!selectedAnswers[current])return;
+ if(current<questions.length-1){current++;renderQuestion();}
+ else showResult();
+};
+
+function calculateLifePath(dateString){
+ let sum=[...dateString.replaceAll("-","")].reduce((a,n)=>a+Number(n),0);
+ while(sum>9 && ![11,22,33].includes(sum)){
+  sum=[...String(sum)].reduce((a,n)=>a+Number(n),0);
+ }
+ return sum;
+}
+
+function chooseResult(){
+ const counts={love:0,work:0,healing:0,intuition:0,growth:0};
+ selectedAnswers.forEach(k=>counts[k]++);
+ const max=Math.max(...Object.values(counts));
+ let tied=Object.keys(counts).filter(k=>counts[k]===max);
+ if(tied.length===1)return tied[0];
+ const life=calculateLifePath(birthday.value);
+ return tied[life%tied.length];
+}
+
+function showResult(){
+ selectedResultKey=chooseResult();
+ const data=resultData[selectedResultKey];
+ quiz.classList.add("hidden");result.classList.remove("hidden");
+ document.getElementById("resultImage").src=data.image;
+ document.getElementById("resultImage").alt=`${data.name}のStone Compass診断結果`;
+ document.getElementById("resultCode").textContent=`RESULT：${selectedResultKey.toUpperCase()}`;
+ document.getElementById("resultName").textContent=data.name;
+ document.getElementById("resultStones").textContent=`おすすめ天然石：${data.stones}`;
+ window.scrollTo(0,0);
+}
+
+function restart(){
+ location.reload();
+}
+document.getElementById("restartBtn").onclick=restart;
+document.getElementById("restartTop").onclick=restart;
+
+document.getElementById("orderBtn").onclick=()=>{
+ const data=resultData[selectedResultKey];
+ const text=`Stone Compass 診断結果\nテーマ：${data.name}\nおすすめ天然石：${data.stones}`;
+ if(navigator.share){
+  navigator.share({title:"Stone Compass 診断結果",text}).catch(()=>{});
+ }else{
+  alert("オーダー相談ページの接続前です。\n\n"+text);
+ }
+};
 </script>
 </body>
 </html>
