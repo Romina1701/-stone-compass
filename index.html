@@ -213,6 +213,131 @@
     .result-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(239,213,139,.10);border:1px solid rgba(239,213,139,.26);color:#f5df9d;font-size:.82rem}
     @media(max-width:560px){.bracelet-real{transform:scale(.82)}.bracelet-stage{min-height:300px}.stone-catalog{grid-template-columns:1fr}}
 
+
+    /* ===== Premium result page, matching the approved reference ===== */
+    .result-screen{
+      background:#f7f4ef!important;color:#302821!important;padding:0 18px 36px!important;
+    }
+    .result-screen .disclaimer{color:#80766d}
+    .result-page-head{
+      margin:0 -18px 18px;padding:18px 20px;display:grid;grid-template-columns:1fr auto 1fr;
+      align-items:center;gap:14px;color:#fff;
+      background:
+        radial-gradient(circle at 10% 0,rgba(117,91,205,.32),transparent 32%),
+        radial-gradient(circle at 92% 16%,rgba(56,111,210,.25),transparent 28%),
+        linear-gradient(135deg,#090d27,#111b46 58%,#19113d);
+      border-bottom:1px solid rgba(239,213,139,.35)
+    }
+    .result-brand{font-family:"Yu Mincho",serif;font-size:1.18rem;color:#f1dda3}
+    .result-page-title{font-family:"Yu Mincho",serif;font-size:1.55rem;letter-spacing:.12em}
+    .result-restart-top{
+      justify-self:end;border:1px solid rgba(239,213,139,.48);background:rgba(255,255,255,.09);
+      color:#fff;border-radius:999px;padding:10px 16px;cursor:pointer
+    }
+    .result-overview{display:grid;grid-template-columns:1.02fr 1fr 1fr 1fr;gap:10px}
+    .overview-card{
+      min-height:235px;padding:20px 16px;text-align:center;background:#fff;border:1px solid #e7dfd6;
+      border-radius:18px;box-shadow:0 10px 26px rgba(58,43,30,.07)
+    }
+    .overview-card h3{font-family:"Yu Mincho",serif;margin:8px 0 12px;font-size:1rem}
+    .overview-card p{margin:0;color:#5f554d;line-height:1.85;font-size:.84rem}
+    .overview-icon{font-size:2rem;color:#b89a63;display:block}
+    .result-label{display:block;font-size:.75rem;letter-spacing:.08em;color:#786a5f}
+    .number-card .life-number{font-size:4.3rem;color:#493c34;margin:8px 0 2px}
+    .number-title{font-family:"Yu Mincho",serif;font-weight:700;font-size:1.05rem;margin-bottom:10px}
+    .lucky-strip{
+      margin-top:12px;padding:15px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+      border-radius:16px;background:#fff;border:1px solid #e7dfd6
+    }
+    .lucky-strip strong{font-family:"Yu Mincho",serif}
+    .lucky-strip p{margin:0 0 0 14px;flex:1;color:#5f554d;font-size:.86rem;line-height:1.65}
+    .result-screen .color-dot{border-color:#d3c8bc}
+    .ornament-title{
+      display:flex;align-items:center;gap:16px;margin:26px 0 14px;color:#3d332b;
+      font-family:"Yu Mincho",serif;font-size:1.45rem;text-align:center
+    }
+    .ornament-title::before,.ornament-title::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,#c9a961,transparent)}
+    .premium-stones{display:grid!important;grid-template-columns:repeat(3,1fr);gap:0!important;background:#fff;border:1px solid #e7dfd6;border-radius:20px;overflow:hidden}
+    .premium-stones .result-stone{
+      display:block!important;text-align:center;padding:20px 24px!important;border:0!important;border-radius:0!important;background:#fff!important
+    }
+    .premium-stones .result-stone+.result-stone{border-left:1px solid #eee6dd!important}
+    .premium-stones .gem{width:82px!important;height:82px!important;margin:12px auto 16px;display:block}
+    .premium-stones strong{font-family:"Yu Mincho",serif;font-size:1rem}
+    .premium-stones small{display:block;color:#685e56!important;line-height:1.7!important;margin-top:12px}
+    .stone-role{
+      display:inline-block;min-width:120px;padding:6px 12px;border-radius:999px;
+      background:#f1e8e1;color:#6d5645;font-size:.75rem;margin-bottom:2px
+    }
+    .bracelet-showcase{
+      display:grid;grid-template-columns:1.25fr .75fr;gap:22px;padding:24px;background:#fff;
+      border:1px solid #e7dfd6;border-radius:22px
+    }
+    .light-stage{
+      min-height:420px!important;background:
+        radial-gradient(circle at 50% 48%,rgba(231,205,169,.28),transparent 34%),
+        linear-gradient(180deg,#fff,#faf7f2)!important
+    }
+    .light-stage::after{background:rgba(86,65,47,.15)!important}
+    .bracelet-main h3{font-family:"Yu Mincho",serif;text-align:center;margin:18px 0 8px;font-size:1.25rem}
+    .bracelet-main>p{color:#655a51;line-height:1.8;text-align:center;margin:0}
+    .bracelet-center-copy{
+      position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);
+      width:145px;text-align:center;color:#4f4035;pointer-events:none
+    }
+    .bracelet-center-copy strong{display:block;font-family:"Yu Mincho",serif;line-height:1.55}
+    .bracelet-center-copy span{display:block;margin-top:5px;font-size:.75rem;color:#847467}
+    .bracelet-specs{display:flex;flex-direction:column}
+    .size-note{text-align:center;color:#6e6258;font-size:.82rem;margin-bottom:10px}
+    .spec-stone-list{border:1px solid #e9e1d8;border-radius:14px;overflow:hidden}
+    .spec-stone{
+      display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;padding:10px 12px;
+      color:#4d423a;font-size:.84rem
+    }
+    .spec-stone+.spec-stone{border-top:1px solid #eee6dd}
+    .spec-gem{width:30px;height:30px;border-radius:50%;box-shadow:inset 5px 5px 8px rgba(255,255,255,.45),inset -5px -6px 8px rgba(0,0,0,.15)}
+    .spec-total{display:flex;justify-content:space-between;padding:13px 12px;color:#4d423a}
+    .zoom-button{
+      margin-top:auto;min-height:44px;border-radius:999px;border:1px solid #cdbda9;background:#fff;color:#4a4038;cursor:pointer
+    }
+    .all-stones-strip{
+      display:grid;grid-template-columns:repeat(7,1fr);gap:12px;padding:18px;background:#fff;
+      border:1px solid #e7dfd6;border-radius:20px
+    }
+    .mini-stone{text-align:center;color:#554940;font-size:.72rem}
+    .mini-stone .gem{width:46px;height:46px;display:block;margin:0 auto 8px}
+    .result-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+    .result-screen .btn-secondary{color:#463a31;background:#fff;border-color:#d9cec3}
+    .bracelet-modal{
+      position:fixed;inset:0;z-index:100;display:none;place-items:center;background:rgba(5,6,17,.86);padding:20px
+    }
+    .bracelet-modal.open{display:grid}
+    .bracelet-modal-card{width:min(520px,95vw);background:#fff;border-radius:24px;padding:24px;text-align:center;color:#3e332c}
+    .bracelet-modal-card .bracelet-real{margin:0 auto;transform:scale(1.22)}
+    .bracelet-modal-close{margin-top:24px;border:0;border-radius:999px;padding:12px 24px;background:#302647;color:#fff}
+    @media(max-width:760px){
+      .result-page-head{grid-template-columns:1fr auto}.result-page-title{grid-column:1/-1;grid-row:1;text-align:center}
+      .result-brand{grid-row:2}.result-restart-top{grid-row:2}
+      .result-overview{grid-template-columns:1fr 1fr}
+      .bracelet-showcase{grid-template-columns:1fr}
+      .all-stones-strip{grid-template-columns:repeat(4,1fr)}
+    }
+    @media(max-width:520px){
+      .result-screen{padding:0 10px 28px!important}
+      .result-page-head{margin:0 -10px 14px;padding:15px 12px}
+      .result-brand{font-size:.9rem}.result-page-title{font-size:1.25rem}.result-restart-top{font-size:.72rem;padding:8px 10px}
+      .result-overview{grid-template-columns:1fr}
+      .overview-card{min-height:auto}
+      .premium-stones{grid-template-columns:1fr}
+      .premium-stones .result-stone+.result-stone{border-left:0!important;border-top:1px solid #eee6dd!important}
+      .bracelet-showcase{padding:14px}
+      .light-stage{min-height:345px!important}
+      .bracelet-real{transform:scale(.88)}
+      .all-stones-strip{grid-template-columns:repeat(3,1fr)}
+      .result-actions{grid-template-columns:1fr}
+      .lucky-strip p{margin-left:0;flex-basis:100%}
+    }
+
 </style>
 </head>
 <body>
@@ -306,39 +431,80 @@
       <div class="nav-actions"><button class="btn btn-secondary btn-small" id="prevQuestion">← 戻る</button><button class="btn btn-primary btn-small" id="nextQuestion" disabled>次へ →</button></div>
     </section>
 
-    <section class="screen" data-screen="result">
-      <div class="result-hero">
-        <span class="eyebrow">YOUR STONE COMPASS</span>
-        <div class="life-number" id="resultNumber"></div>
-        <div class="result-theme" id="resultTheme"></div>
-        <p class="screen-lead" id="resultSummary" style="margin:10px auto 0;max-width:620px"></p>
+
+    <section class="screen result-screen" data-screen="result">
+      <div class="result-page-head">
+        <div class="result-brand">✦ Stone Compass</div>
+        <div class="result-page-title">あなたの診断結果</div>
+        <button class="result-restart-top" id="restartTopButton">↻ 診断をやり直す</button>
       </div>
-      <div class="result-grid">
-        <div class="result-box"><h3>基本性格</h3><p id="resultPersonality"></p></div>
-        <div class="result-box"><h3>現在のテーマ</h3><p id="resultCurrent"></p></div>
-        <div class="result-box"><h3>今、意識したいこと</h3><p id="resultAdvice"></p></div>
-        <div class="result-box"><h3>ラッキーカラー</h3><div class="color-chip"><span class="color-dot" id="colorDot"></span><strong id="resultColor"></strong></div></div>
+
+      <div class="result-overview">
+        <article class="overview-card number-card">
+          <span class="result-label">ライフパスナンバー</span>
+          <div class="life-number" id="resultNumber"></div>
+          <div class="number-title" id="numberTitle"></div>
+          <p id="numberMessage"></p>
+        </article>
+        <article class="overview-card">
+          <span class="overview-icon">✿</span>
+          <h3>基本性格</h3>
+          <p id="resultPersonality"></p>
+        </article>
+        <article class="overview-card">
+          <span class="overview-icon">♧</span>
+          <h3>現在のテーマ</h3>
+          <p id="resultCurrent"></p>
+        </article>
+        <article class="overview-card">
+          <span class="overview-icon">✦</span>
+          <h3>今意識したいこと</h3>
+          <p id="resultAdvice"></p>
+        </article>
       </div>
-      <h2 style="margin-top:28px">おすすめ天然石 3種類</h2>
-      <div class="result-stones" id="resultStones"></div>
-      <div class="premium-result">
-        <span class="result-badge">✦ あなた専用の組み合わせ</span>
-        <h2 style="margin:14px 0 6px">おすすめブレスレット</h2>
-        <p id="braceletTitle" style="font-family:'Yu Mincho',serif;font-size:1.25rem;margin:0;color:var(--text)"></p>
-        <div class="bracelet-stage"><div class="bracelet-real" id="braceletReal"></div></div>
-        <div class="stone-catalog" id="stoneCatalog"></div>
-        <div class="spec-table">
-          <div class="spec-row"><span>内周サイズ</span><span>約16cm</span></div>
-          <div class="spec-row"><span>使用石</span><span>3種類</span></div>
-          <div class="spec-row"><span>基本構成</span><span>8mm × 16粒</span></div>
-          <div class="spec-row"><span>デザイン</span><span>左右対称</span></div>
+
+      <div class="lucky-strip">
+        <strong>ラッキーカラー</strong>
+        <span class="color-dot" id="colorDot"></span>
+        <span id="resultColor"></span>
+        <p id="resultSummary"></p>
+      </div>
+
+      <div class="ornament-title"><span>おすすめ天然石 3種類</span></div>
+      <div class="result-stones premium-stones" id="resultStones"></div>
+
+      <div class="ornament-title"><span>おすすめブレスレット提案</span></div>
+      <section class="bracelet-showcase">
+        <div class="bracelet-main">
+          <div class="bracelet-stage light-stage">
+            <div class="bracelet-real" id="braceletReal"></div>
+            <div class="bracelet-center-copy">
+              <strong id="braceletCatch"></strong>
+              <span id="braceletSubCatch"></span>
+            </div>
+          </div>
+          <h3 id="braceletTitle"></h3>
+          <p id="braceletText"></p>
         </div>
-        <p id="braceletText" style="color:var(--muted);line-height:1.8;margin:18px 0 0"></p>
+
+        <div class="bracelet-specs">
+          <div class="size-note">内周サイズ：約16cm（標準）</div>
+          <div id="stoneCatalog" class="spec-stone-list"></div>
+          <div class="spec-total"><span>合計</span><strong>16粒</strong></div>
+          <button class="zoom-button" id="zoomBracelet">⌕ ブレスレットを拡大して見る</button>
+        </div>
+      </section>
+
+      <div class="ornament-title"><span>使用している天然石</span></div>
+      <div class="all-stones-strip" id="allStonesStrip"></div>
+
+      <div class="result-actions">
+        <button class="btn btn-primary order-btn" id="orderButton">この結果でオーダー相談へ →</button>
+        <button class="btn btn-secondary order-btn" id="restartButton">もう一度診断する</button>
       </div>
-      <button class="btn btn-primary order-btn" id="orderButton">この結果でオーダー相談へ →</button>
-      <button class="btn btn-secondary order-btn" id="restartButton">もう一度診断する</button>
-      <p class="disclaimer">天然石は古くから象徴やお守りとして親しまれてきたものです。本診断は娯楽と自己理解のきっかけを目的としており、医療・治療・投資・人生上の重要な判断を代替するものではありません。</p>
+      <p class="disclaimer">天然石の意味合いは古くからの伝承に基づくものであり、効果を保証するものではありません。お守りや、気持ちを切り替えるきっかけとしてお楽しみください。</p>
     </section>
+
   </div>
 </div>
 
@@ -496,7 +662,8 @@ function buildResult(){
   const themeKey=dominantTheme(),theme=themes[themeKey];
   const selected=uniqueStones([num.stone,theme.stone,"水晶"]);
   document.getElementById("resultNumber").textContent=lifeNumber;
-  document.getElementById("resultTheme").textContent=`${num.title} × ${theme.name}`;
+  document.getElementById("numberTitle").textContent=num.title;
+  document.getElementById("numberMessage").textContent=`${num.title}としての資質を持ち、${theme.name}が今の中心テーマです。`;
   document.getElementById("resultSummary").textContent=theme.summary;
   document.getElementById("resultPersonality").textContent=num.personality;
   document.getElementById("resultCurrent").textContent=theme.summary;
@@ -508,31 +675,64 @@ function buildResult(){
   selected.forEach((name,i)=>{
     const s=stones[name];
     const div=document.createElement("div");div.className="result-stone";
-    div.innerHTML=`<span class="gem" style="background:${stoneBackground(name)}"></span><div><strong>${i+1}. ${name}</strong><small>${s.meaning}</small></div>`;
+    const roles=["メイン","サブ","サポート"];
+    div.innerHTML=`<span class="stone-role">${roles[i]}</span><span class="gem" style="background:${stoneBackground(name)}"></span><div><strong>${name}</strong><small>${s.meaning}</small></div>`;
     resultStones.appendChild(div);
   });
 
   const bracelet=document.getElementById("braceletReal");bracelet.innerHTML="";
   const pattern=[0,2,1,2,0,2,1,2,0,2,1,2,0,2,1,2];
+  const counts={};
+  pattern.forEach(idx=>counts[selected[idx]]=(counts[selected[idx]]||0)+1);
   pattern.forEach((idx,i)=>{
     const name=selected[idx],angle=(360/pattern.length)*i-90,rad=angle*Math.PI/180;
     const bead=document.createElement("span");bead.className="bracelet-bead";
     bead.style.left=(128+Math.cos(rad)*112)+"px";bead.style.top=(128+Math.sin(rad)*112)+"px";
     bead.style.background=stoneBackground(name);bead.title=name;bracelet.appendChild(bead);
   });
+
   const catalog=document.getElementById("stoneCatalog");catalog.innerHTML="";
-  selected.forEach((name,i)=>{const card=document.createElement("div");card.className="stone-catalog-card";const roles=["メイン","サブ","調和"];card.innerHTML=`<span class="gem" style="background:${stoneBackground(name)}"></span><strong>${name}</strong><small>${roles[i]}ストーン</small>`;catalog.appendChild(card)});
-  document.getElementById("braceletTitle").textContent=`「${theme.name}」を支える ${selected[0]}ブレスレット`;
-  document.getElementById("braceletText").textContent=`${selected[0]}を主役に、${selected[1]}をアクセントとして配置し、水晶で全体をつないだ16粒構成です。診断結果に合わせて、石の種類と並び順が自動で変わります。`;
+  selected.forEach((name,i)=>{
+    const row=document.createElement("div");row.className="spec-stone";
+    row.innerHTML=`<span class="spec-gem" style="background:${stoneBackground(name)}"></span><span>${name}<br><small>${i===0?"メイン":i===1?"サブ":"サポート"}</small></span><strong>8mm　${counts[name]||0}粒</strong>`;
+    catalog.appendChild(row);
+  });
+
+  document.getElementById("braceletCatch").textContent=`${num.title}の力を育む`;
+  document.getElementById("braceletSubCatch").textContent=`${theme.name}ブレスレット`;
+  document.getElementById("braceletTitle").textContent=`${selected[0]}・${selected[1]}・${selected[2]}の調和ブレスレット`;
+  document.getElementById("braceletText").textContent=`${selected[0]}を主役に、${selected[1]}で今のテーマを補い、${selected[2]}で全体を整えた左右対称の16粒構成です。`;
+
+  const allNames=["水晶","アメジスト","シトリン","タイガーアイ","カーネリアン","アクアマリン","ラピスラズリ","ラブラドライト","ムーンストーン","スモーキークォーツ","ガーネット","ロードクロサイト","ローズクォーツ","ターコイズ"];
+  const strip=document.getElementById("allStonesStrip");strip.innerHTML="";
+  allNames.forEach(name=>{
+    if(!stones[name]) return;
+    const item=document.createElement("div");item.className="mini-stone";
+    item.innerHTML=`<span class="gem" style="background:${stoneBackground(name)}"></span><strong>${name}</strong>`;
+    strip.appendChild(item);
+  });
   document.getElementById("orderButton").onclick=()=>{
     const text=`Stone Compass 診断結果\nライフパス：${lifeNumber}\nテーマ：${num.title} × ${theme.name}\nおすすめ：${selected.join("・")}`;
     if(navigator.share){navigator.share({title:"Stone Compass 診断結果",text}).catch(()=>{})}
     else{alert("購入ページのURLが決まり次第、このボタンに接続できます。\n\n"+text)}
   };
 }
-document.getElementById("restartButton").addEventListener("click",()=>{
+function restartDiagnosis(){
   answersState.fill(null);currentQuestion=0;lifeNumber=null;birthDate.value="";showScreen("birth");
+}
+document.getElementById("restartButton").addEventListener("click",restartDiagnosis);
+document.getElementById("restartTopButton").addEventListener("click",restartDiagnosis);
+
+const zoomModal=document.createElement("div");
+zoomModal.className="bracelet-modal";
+zoomModal.innerHTML=`<div class="bracelet-modal-card"><h2>おすすめブレスレット</h2><div class="bracelet-real" id="zoomBraceletReal"></div><button class="bracelet-modal-close">閉じる</button></div>`;
+document.body.appendChild(zoomModal);
+document.getElementById("zoomBracelet").addEventListener("click",()=>{
+  document.getElementById("zoomBraceletReal").innerHTML=document.getElementById("braceletReal").innerHTML;
+  zoomModal.classList.add("open");
 });
+zoomModal.querySelector(".bracelet-modal-close").addEventListener("click",()=>zoomModal.classList.remove("open"));
+zoomModal.addEventListener("click",e=>{if(e.target===zoomModal)zoomModal.classList.remove("open")});
 </script>
 </body>
 </html>
